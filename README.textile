@@ -1,11 +1,13 @@
-h1. Escape Codec Library conformed to Closure
+forked from "Kuniwak/Escape-Codec-Library-for-Closure":https://github.com/Kuniwak/Escape-Codec-Library-for-Closure
 
-日本語のREADMEは "こちら":https://github.com/OrgaChem/Escape-Codec-Library-for-Closure/blob/master/README_Ja.textile
+h1. Escape Codec Library for Deno/Browser
+
+日本語のREADMEは "こちら":https://github.com/takker99/deno-ecl/blob/master/README_Ja.textile
 
 
 h2. Abstract
 
-It is customed "ECL(Escape Codec Library) files":http://nurucom-archives.hp.infoseek.co.jp/digital/ [1] for Google Closure Library users.
+It is customed "ECL(Escape Codec Library) files":http://nurucom-archives.hp.infoseek.co.jp/digital/ [1] for Deno/browser.
 
 And JIS11280 table constructing in original script is slowly in IE6.
 So the argorithm was "refined":http://www.drk7.jp/MT/archives/001324.html .
@@ -24,3 +26,4 @@ h2. Acknowledgment
 
 Thanks "ヌルコムアーカイブス・デジタル制作室":http://nurucom-archives.hp.infoseek.co.jp/ who provided the original script.
 Thanks "drk7.jp":http://www.drk7.jp/MT/archives/001324.html who provided the faster algorithm.
+Thanks @Kuniwak, the owner of the original repo
