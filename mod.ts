@@ -65,7 +65,7 @@ export const escapeSJIS = (str: string) => {
  * @param  str An escaped Shift-JIS string.
  * @return  An unescaped Shift-JIS string.
  */
-export const unescapeSJIS = (str: string) => { //{{{
+export const unescapeSJIS = (str: string) => {
   const func = (s: string) => {
     let c = parseInt(s.substring(1, 3), 16);
     const l = s.length;
@@ -89,7 +89,7 @@ export const unescapeSJIS = (str: string) => { //{{{
  * @param  str An EUC-JP string.
  * @return  An escaped EUC-JP string.
  */
-export const escapeEUCJP = (str: string) => { //{{{
+export const escapeEUCJP = (str: string) => {
   const func = (s: string) => {
     let c = s.charCodeAt(0);
     return (c < 128
@@ -110,7 +110,7 @@ export const escapeEUCJP = (str: string) => { //{{{
  * @param  str An escaped EUC-JP string.
  * @return  An unescaped EUC-JP string.
  */
-export const unescapeEUCJP = (str: string) => { //{{{
+export const unescapeEUCJP = (str: string) => {
   const func = (s: string) => {
     const c = parseInt(s.substring(1), 16);
     return c < 161
@@ -127,7 +127,7 @@ export const unescapeEUCJP = (str: string) => { //{{{
  * @param  str A JIS7 string.
  * @return  An escaped JIS7 string.
  */
-export const escapeJIS7 = (str: string) => { //{{{
+export const escapeJIS7 = (str: string) => {
   const u = String.fromCharCode,
     ri = u(92, 120, 48, 48, 45, 92, 120, 55, 70),
     rj = u(65377, 45, 65439, 93, 43);
@@ -327,13 +327,15 @@ export const unescapeUnicode = (str: string) => {
 };
 //}}}
 
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 /**
  * Escapes UTF7.
  * @param  str A UTF7 string.
  * @return  An escaped UTF7 string.
  */
 export const escapeUTF7 = (str: string) => { //{{{
-  const B = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+  const B = characters
     .split("");
   const E = (s: string) => {
     let c = s.charCodeAt(0);
@@ -366,13 +368,9 @@ export const unescapeUTF7 = (str: string) => {
   let i = 0;
   const B = {} as Record<string, number>;
   while (i < 64) {
-    B[
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(
-        i,
-      )
-    ] = i++;
+    B[characters.charAt(i)] = i++;
   }
-  const rx1 = RegExp("[+][+/-9A-Za-z]*-?", "g");
+  const rx1 = /[+][+/-9A-Za-z]*-?/g;
   const fn1 = (s: string) => {
     if ("+-" == s) return "+";
     let b = B[s.charAt(1)], c, i = 1, t = "";
@@ -466,8 +464,7 @@ export const unescapeUTF16LE = (str: string) => {
   const u = String.fromCharCode, b = u(92, 120, 48, 48, 45, 92, 120, 70, 70);
   const rx1 = /^%FF%FE/i;
   const rx2 = new RegExp(
-    "%[0-9A-F]{2}%[0-9A-F]{2}|%[0-9A-F]{2}[" + b + "]|[" + b +
-      "]%[0-9A-F]{2}|[" + b + "]{2}",
+    `%[0-9A-F]{2}%[0-9A-F]{2}|%[0-9A-F]{2}[${b}]|[${b}]%[0-9A-F]{2}|[${b}]{2}`,
     "ig",
   );
   const fn1 = (s: string) => {
