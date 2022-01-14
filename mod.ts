@@ -15,14 +15,14 @@ import { JCT11280, JCT8836 } from "./table.ts";
  * @author @takker
  */
 
-const UNICODE = "Unicode" as const;
-const UTF16LE = "UTF16LE" as const;
-const UTF8 = "UTF8" as const;
-const EUCJP = "EUCJP" as const;
-const JIS8 = "JIS8" as const;
-const JIS7 = "JIS7" as const;
-const SJIS = "SJIS" as const;
-const encodes = [
+export const UNICODE = "Unicode" as const;
+export const UTF16LE = "UTF16LE" as const;
+export const UTF8 = "UTF8" as const;
+export const EUCJP = "EUCJP" as const;
+export const JIS8 = "JIS8" as const;
+export const JIS7 = "JIS7" as const;
+export const SJIS = "SJIS" as const;
+export const encodes = [
   UNICODE,
   UTF16LE,
   UTF8,
